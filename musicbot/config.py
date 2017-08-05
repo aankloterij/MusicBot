@@ -130,14 +130,14 @@ class Config:
                     "don't know what that is, use the %sid command" % self.command_prefix,
                     preface=confpreface)
 
-        else:
-            raise HelpfulError(
-                "An invalid OwnerID was set.",
+        # else:
+        #     raise HelpfulError(
+        #        "An invalid OwnerID was set.",
 
-                "Correct your OwnerID.  The ID should be just a number, approximately "
-                "18 characters long.  If you don't know what your ID is, "
-                "use the %sid command.  Current invalid OwnerID: %s" % (self.command_prefix, self.owner_id),
-                preface=confpreface)
+        #         "Correct your OwnerID.  The ID should be just a number, approximately "
+        #         "18 characters long.  If you don't know what your ID is, "
+        #         "use the %sid command.  Current invalid OwnerID: %s" % (self.command_prefix, self.owner_id),
+        #          preface=confpreface)
 
         if self.bound_channels:
             try:

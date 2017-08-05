@@ -102,7 +102,7 @@ class MusicBot(discord.Client):
             # Only allow the owner to use these commands
             orig_msg = _get_variable('message')
 
-            if not orig_msg or orig_msg.author.id == self.config.owner_id:
+            if not orig_msg or orig_msg.author.id in self.config.owner_id:
                 return await func(self, *args, **kwargs)
             else:
                 raise exceptions.PermissionsError("only the owner can use this command", expire_in=30)
@@ -121,7 +121,7 @@ class MusicBot(discord.Client):
                         if m.id == self.config.owner_id:
                             return m
         else:
-            return discord.utils.find(lambda m: m.id == self.config.owner_id, self.get_all_members())
+            return discord.utils.find(lambda m: m.id in self.config.owner_id, self.get_all_members())
 
     def _delete_old_audiocache(self, path=AUDIO_CACHE_PATH):
         try:
