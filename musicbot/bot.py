@@ -1814,8 +1814,15 @@ class MusicBot(discord.Client):
 
     async def on_message(self, message):
         await self.wait_until_ready()
-
+	
+	
         message_content = message.content.strip()
+
+        if self.user in message.mentions and "fuck you" in message_content:
+            await self.safe_send_message(message.channel, "With or without sounds?")
+            await self.disconnect_all_voice_clients()
+            raise exceptions.RestartSignal
+
         if not message_content.startswith(self.config.command_prefix):
             return
 
